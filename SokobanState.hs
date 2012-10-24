@@ -4,7 +4,7 @@ module SokobanState (
     GameState (currentLevel), 
     startGame, restartLevel, nextLevel, 
     move, undoMove,
-    levelNr,
+    levelNr, stepCount,
     loadLevelsFromFile, loadLevelsFromArgs
     ) where
 
@@ -52,6 +52,9 @@ nextLevel state =
 
 levelNr :: GameState -> Int
 levelNr state = currentLevelIndex state + 1
+
+stepCount :: GameState -> Int
+stepCount state = length $ moves state
 
 loadLevelsFromArgs :: IO [Level]
 loadLevelsFromArgs = do

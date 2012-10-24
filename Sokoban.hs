@@ -18,7 +18,6 @@ data Level = Level { width    :: Int
                    , walls    :: [Coord]
                    , storages :: [Coord]
                    , crates   :: [Coord]
-                   , steps    :: Int
                    } deriving (Show)
 
 data Move = Up | Down | Left | Right
@@ -31,7 +30,6 @@ emptyLevel = Level { width    = 0
                    , walls    = []
                    , storages = []
                    , crates   = []
-                   , steps    = 0
                    }
 
 step :: Move -> Level -> Maybe (Level, MovedWithCrate)
@@ -41,8 +39,8 @@ step mv lvl
 		if isWallAt lvl nextCoord'
 		   || isCrateAt lvl nextCoord'
 	    then Nothing
-	    else Just (lvl { crates = moveCrate, worker = nextCoord, steps = 1+steps lvl }, True)
-	| otherwise               = Just (lvl { worker = nextCoord, steps = 1+steps lvl }, False)
+	    else Just (lvl { crates = moveCrate, worker = nextCoord }, True)
+	| otherwise               = Just (lvl { worker = nextCoord }, False)
 	where nextCoord  = moveCoord (worker lvl) mv
 	      nextCoord' = moveCoord nextCoord mv
 	      moveCrate  = nextCoord':(delete nextCoord $ crates lvl)
@@ -52,9 +50,9 @@ stepBack (mv, withCrate) lvl
     | isWallAt lvl prevCoord = lvl
     | isCrateAt lvl prevCoord = lvl
     | isCrateAt lvl nextCoord && withCrate =
-        lvl { crates = moveCrate, worker = prevCoord, steps = steps lvl -1 }
+        lvl { crates = moveCrate, worker = prevCoord }
     | otherwise =
-        lvl { worker = prevCoord, steps = steps lvl -1 }
+        lvl { worker = prevCoord }
     where nextCoord = moveCoord (worker lvl) mv
           prevCoord = moveCoord (worker lvl) (opposite mv)
           moveCrate = (worker lvl):(delete nextCoord $ crates lvl)

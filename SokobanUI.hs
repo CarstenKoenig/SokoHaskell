@@ -134,7 +134,7 @@ renderUi imgMap mv = do
 	forM (coords level) (showTiles level)
 	restore
 
-	printText $ "steps: " ++ (show $ steps level)
+	printText $ "steps: " ++ (show $ stepCount state)
 	printLevel state
 
 	when (isFinished level) printSucceeded
