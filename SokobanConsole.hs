@@ -1,6 +1,6 @@
 -- Sokoban.Console application
 
-module Sokoban.Console where
+module Main where
 
 import Prelude hiding (Either(..))
 
