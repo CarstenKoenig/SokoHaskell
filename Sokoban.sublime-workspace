@@ -1,0 +1,675 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"sca",
+				"scaleY"
+			],
+			[
+				"scale",
+				"scaleX"
+			],
+			[
+				"line",
+				"lineTo"
+			],
+			[
+				"readf",
+				"readFileOrDefault"
+			],
+			[
+				"level",
+				"testLevelSource"
+			],
+			[
+				"isw",
+				"isWorkerAt"
+			],
+			[
+				"Worker",
+				"WorkerTile"
+			],
+			[
+				"St",
+				"StorageTile"
+			],
+			[
+				"Crate",
+				"CrateTile"
+			],
+			[
+				"Wor",
+				"WorkerTile"
+			],
+			[
+				"game",
+				"gameState"
+			],
+			[
+				"grid",
+				"gridWidth-1"
+			],
+			[
+				"gridh",
+				"gridHeight-1"
+			],
+			[
+				"gridw",
+				"gridWidth-1"
+			],
+			[
+				"image",
+				"imageSurfaceGetHeight"
+			],
+			[
+				"pare",
+				"parseLevelLine"
+			],
+			[
+				"parse",
+				"parseLevelElement"
+			],
+			[
+				"em",
+				"EmptyFrame"
+			],
+			[
+				"test_addingan",
+				"test_addingAnotherToss_toAStrike_WillNotSetTheBonus"
+			],
+			[
+				"Strik",
+				"StrikeFrame"
+			],
+			[
+				"frm",
+				"frameScore"
+			],
+			[
+				"setsthebonus",
+				"test_addingAnotherToss_toAStrike_SetsTheBonus"
+			],
+			[
+				"test_addingano",
+				"test_addingAnotherToss_toAStrike_WillNotSetTheFrameScore"
+			],
+			[
+				"test_add",
+				"test_addingTwoTosses_toAStrike_WillSetTheFrameScore"
+			],
+			[
+				"after10",
+				"test_frameScore_after10_isStrikeNothing"
+			],
+			[
+				"after",
+				"test_bonus_after5And5_isNothing"
+			],
+			[
+				"Spare",
+				"SpareFrame"
+			],
+			[
+				"Norm",
+				"NormalFrame"
+			],
+			[
+				"Sp",
+				"SpareFrame"
+			],
+			[
+				"Unfi",
+				"UnfinishedFrame"
+			],
+			[
+				"No",
+				"Nothing"
+			],
+			[
+				"Un",
+				"UnfinishedFrame"
+			],
+			[
+				"tst_fra",
+				"test_frameScore_after5And5_isSpareNothing"
+			],
+			[
+				"test",
+				"test_bonus_after5And5_isNothing"
+			],
+			[
+				"Fra",
+				"FrameScore"
+			],
+			[
+				"fra",
+				"frameScore"
+			],
+			[
+				"check",
+				"checkMultiplesOf5_endsWith_Fizz"
+			],
+			[
+				"parsel",
+				"parseDottedListItems"
+			],
+			[
+				"parseli",
+				"parseListItems"
+			],
+			[
+				"Dotte",
+				"parseDottedList"
+			],
+			[
+				"applyb",
+				"applyButton"
+			],
+			[
+				"cast",
+				"castToButton"
+			],
+			[
+				"buil",
+				"builderGetObject"
+			],
+			[
+				"clos",
+				"closeButton"
+			],
+			[
+				"Lis",
+				"LispVal"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Sokoban.cabal",
+			"settings":
+			{
+				"buffer_size": 407,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "SokobanConsole.hs",
+			"settings":
+			{
+				"buffer_size": 1037,
+				"line_ending": "Unix",
+				"name": "-- Sokoban.Console application"
+			}
+		},
+		{
+			"file": "Sokoban.hs",
+			"settings":
+			{
+				"buffer_size": 3583,
+				"line_ending": "Unix",
+				"name": "-- Sokoban - cloning the Sokobangame in Haskell"
+			}
+		},
+		{
+			"file": "SokobanUI.hs",
+			"settings":
+			{
+				"buffer_size": 4866,
+				"line_ending": "Unix",
+				"name": "-- Sokoban.UI - UI application"
+			}
+		},
+		{
+			"file": "AllLevels.lvls",
+			"settings":
+			{
+				"buffer_size": 11716,
+				"line_ending": "Unix",
+				"name": "#####"
+			}
+		},
+		{
+			"file": "CairoTest.hs",
+			"settings":
+			{
+				"buffer_size": 2567,
+				"line_ending": "Unix",
+				"name": "import Graphics.UI.Gtk"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 54.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Contr",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/carsten/Win/Projekte/Haskell/Sokoban/Level1.lvl",
+		"/home/carsten/Win/Projekte/Haskell/Sokoban/Level2.lvl",
+		"/home/carsten/.config/sublime-text-2/Packages/Haskell/Indent Patterns.tmPreferences",
+		"/home/carsten/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/carsten/.config/sublime-text-2/Packages/Haskell/Haskell.sublime-settings",
+		"/home/carsten/.config/sublime-text-2/Packages/Haskell/module.sublime-snippet",
+		"/home/carsten/.config/sublime-text-2/Packages/Haskell/Symbol List.tmPreferences",
+		"/home/carsten/.config/sublime-text-2/Packages/SublimeHaskell/SublimeHaskell.sublime-settings",
+		"/home/carsten/Win/Projekte/Haskell/TDD/TDD-test-stub.cabal",
+		"/home/carsten/Win/Projekte/Haskell/Sokoban/Setup.hs",
+		"/home/carsten/Win/Projekte/Haskell/BowlingKata/src/Bowling/Utils.hs",
+		"/home/carsten/Win/Projekte/Haskell/TDD/src/FizzBuzz/Utils.hs",
+		"/home/carsten/Win/Projekte/Haskell/TDD/dist/test/TDD-test-1.0.0-FizzBuzz-tests.log",
+		"/home/carsten/Win/Projekte/Haskell/TDD/src/FizzBuzz/FizzBuzzUtils.hs",
+		"/home/carsten/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/carsten/Win/Projekte/Haskell/TDD/RunTests",
+		"/home/carsten/.config/sublime-text-2/Packages/Alignment/Default (Linux).sublime-keymap",
+		"/home/carsten/Win/Projekte/Haskell/TDD/TDD-test.project",
+		"/home/carsten/dev/clojure/count-to/project.clj",
+		"/home/carsten/dev/clojure/count-to/src/count_to/core.clj",
+		"/home/carsten/Haskell/Gtk2Hs/hellogtk2hs.glade",
+		"/home/carsten/Haskell/Gtk2Hs/hellogtk2hs.hs",
+		"/home/carsten/temp/foo-bar/project.clj",
+		"/home/carsten/temp/foo-bar/src/foo_bar/core.clj",
+		"/home/carsten/Haskell/wxHaskell/wxc-0.90.0.4/Setup.hs",
+		"/home/carsten/Haskell/Gtk2Hs/OpenGl.hs",
+		"/home/carsten/Haskell/Gtk2Hs/Test.glade",
+		"/etc/profile",
+		"/home/carsten/Win/Projekte/Haskell/SchemeInterpreter/Setup.hs",
+		"/home/carsten/Win/Projekte/Haskell/SchemeInterpreter/Main.hs",
+		"/home/carsten/Win/Projekte/Haskell/SchemeInterpreter/SchemeInterpreter.cabal",
+		"/home/carsten/Win/Projekte/Haskell/SchemeInterpreter/Greetings/Greetings.hs",
+		"/home/carsten/Win/Projekte/Haskell/CabalTest/Greetings.hs",
+		"/home/carsten/Win/Projekte/Haskell/SchemeInterpreter/Greetings.hs",
+		"/home/carsten/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+		"/home/carsten/Win/Projekte/Haskell/CabalTest/greetings.hs",
+		"/home/carsten/Dokumente/HaskellProjects/Yesod/Test/Piggies.hs",
+		"/home/carsten/Dokumente/HaskellProjects/Spikes/ParallelTest.hs",
+		"/etc/rc.local",
+		"/usr/share/applications/sublime.desktop",
+		"/usr/share/applications/drracket.desktop",
+		"/home/carsten/Downloads/racket-5.3-bin-i386-linux-ubuntu-karmic.sh",
+		"/usr/share/applications/defaults.list"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"true",
+			"		Just 'w' -> do\n			putMVar gameState $ step Up level\n			redraw wnd\n			return true\n",
+			"	    printSucceeded :: Int -> Render()\n",
+			"showSteps",
+			"level",
+			"import",
+			"lvl",
+			"gameLoop",
+			"canvas",
+			"wallImg",
+			"			| WorkerTile -> worker\n",
+			"myDraw",
+			"main",
+			"eventWidth",
+			"newCoord",
+			"		'a'       -> gameLoop (step Left lvl)\n",
+			"updateLevel",
+			"storage",
+			"->",
+			"isWallAt",
+			"isWallAt :: Level -> Coord -> Bool\nisWallAt l c -> elem c $ walls l\n\n",
+			"heigth",
+			"((",
+			"\n#####",
+			"int",
+			"test_addingTwoTosses_toAStrike_WillSetTheFrameScore",
+			"test_addingAnotherToss_toAStrike_WillNotSetTheFrameScore",
+			"test_addingAnotherToss_toAStrike_SetsTheFrameScore",
+			"test_addingAnotherToss_toASpare_SetsTheFrameScore",
+			"test_addingAnotherToss_toASpare_SetsTheBonus",
+			"test_frameScore_after5And5_isSpareNothing",
+			"test_addingAnotherToss_toASpare_SetsTheBonus",
+			"test_frameScore_after5And5_isSpareNothing",
+			"test_frameScore_after5And5_isSpareNothing :: Test\ntest_frameScore_after5And5_isSpareNothing = testCase\n	\"nachdem mit dem ersten Wurf 5 und dem zweiten 5 getroffen wurden ist der frameScore = SpareScore Nothing\" $\n	SpareScore Nothing @=? frameScore frame\n	where frame = toss 5 . toss 5 $ emptyFrame\n\n",
+			"bonus",
+			"secondToss",
+			"f",
+			"firstToss",
+			"test_frameScore_after5And5_isStrikeNothing",
+			"test_frameScore_after5And4_isNormal9",
+			"test_bonus_after5And4_isJust0",
+			"test_bonus_after5And4_isJust0 :: Test\ntest_bonus_after5And4_isJust0 = testCase\n	\"nachdem mit dem ersten Wurf 5 und dem zweiten 4 getroffen wurden ist bonus = Just 0\" $\n	Just 0 @=? bonus frame\n	where frame = toss 4 . toss 5 $ emptyFrame\n\ntest_frameScore_after5And4_isNormal9 :: Test\ntest_frameScore_after5And4_isNormal9 = testCase\n	\"nachdem mit dem ersten Wurf 5 und dem zweiten 4 getroffen wurden ist der frameScore = NormalScore 9\" $\n	NormalScore 9 @=? frameScore frame\n	where frame = toss 4 . toss 5 $ emptyFrame\n\n",
+			"test_bonus_after5And4_isJust0",
+			"test_secondToss_after5And4_isJust4",
+			"test_initialFirstToss_isUndefined :: Assertion\ntest_initialFirstToss_isUndefined =\n	Nothing @=? firstToss initialFrame\n	where initialFrame = emptyFrame\n\n",
+			"Frame (_, Just s, _)",
+			"secondToss",
+			"firstToss",
+			"emptyFrame",
+			"mod",
+			"Monad",
+			"greetings",
+			"gedit.desktop"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"checkMultiplesOf5_endsWith_Buzz",
+			"sublime.desktop"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Sokoban.cabal",
+					"settings":
+					{
+						"buffer_size": 407,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								311,
+								311
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "SokobanConsole.hs",
+					"settings":
+					{
+						"buffer_size": 1037,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								134,
+								134
+							]
+						],
+						"settings":
+						{
+							"auto_name": "-- Sokoban.Console application",
+							"syntax": "Packages/Haskell/Haskell.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Sokoban.hs",
+					"settings":
+					{
+						"buffer_size": 3583,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								796,
+								796
+							]
+						],
+						"settings":
+						{
+							"auto_name": "-- Sokoban - cloning the Sokobangame in Haskell",
+							"syntax": "Packages/Haskell/Haskell.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 255.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "SokobanUI.hs",
+					"settings":
+					{
+						"buffer_size": 4866,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1089,
+								1089
+							]
+						],
+						"settings":
+						{
+							"auto_name": "-- Sokoban.UI - UI application",
+							"syntax": "Packages/Haskell/Haskell.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 204.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "AllLevels.lvls",
+					"settings":
+					{
+						"buffer_size": 11716,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								165,
+								165
+							]
+						],
+						"settings":
+						{
+							"auto_name": "#####",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "CairoTest.hs",
+					"settings":
+					{
+						"buffer_size": 2567,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2567,
+								2567
+							]
+						],
+						"settings":
+						{
+							"auto_name": "import Graphics.UI.Gtk",
+							"syntax": "Packages/Haskell/Haskell.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"output.haskell_error_checker":
+	{
+		"height": 272.0
+	},
+	"output.haskell_type_panel":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"greetings",
+				"/home/carsten/Win/Projekte/Haskell/CabalTest/Greetings.hs"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

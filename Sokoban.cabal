@@ -1,0 +1,14 @@
+Name:                Sokoban
+Version:             0.1
+Description:         Sokoban Clon in Haskell
+License:             GPL
+Author:              Carsten König
+Maintainer:          Carsten@gettingsharper.de
+Build-Type:          Simple
+Cabal-Version:       >=1.2
+
+Executable sokoban
+  Main-is:           SokobanUI.hs
+  Build-Depends: base >= 3 && < 5,
+                 gtk,
+                 cairo
