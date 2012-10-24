@@ -4,7 +4,7 @@ module Main (main) where
 
 import Prelude hiding (Either(..))
 
-import Control.Monad (liftM, forM, when, guard)
+import Control.Monad (forM, when)
 import Control.Concurrent.MVar
 
 import Graphics.UI.Gtk

@@ -5,9 +5,6 @@ module Sokoban where
 import Prelude hiding (Either(..))
 
 import Data.List (sort, delete)
-import Data.Char (toLower)
-
-import Control.Monad (liftM, forM)
 
 type Coord = (Int, Int)
 type MovedWithCrate = Bool
@@ -18,7 +15,7 @@ data Level = Level { width    :: Int
                    , walls    :: [Coord]
                    , storages :: [Coord]
                    , crates   :: [Coord]
-                   } deriving (Show)
+                   }
 
 data Move = Up | Down | Left | Right
 			deriving (Show, Eq)
@@ -86,18 +83,3 @@ isStorageAt l c = elem c $ storages l
 
 isWorkerAt :: Level -> Coord -> Bool
 isWorkerAt l c = c == worker l
-
-showLevel :: Level -> [String]
-showLevel l = map showLine lns
-	where lns = [0..height l - 1]
-	      showLine y = map showCoord [(x,y) | x <- [0..width l - 1]]
-	      showCoord c
-	      	| isWallAt l c    = '#'
-	      	| isWorkerAt l c && isStorageAt l c
-	      	                  = '+'
-	      	| isWorkerAt l c  = '@'
-	      	| isCrateAt l c && isStorageAt l c
-	      	                  = '*'
-	      	| isCrateAt l c   = 'o'
-	      	| isStorageAt l c = '.'
-	      	| otherwise       = ' '
