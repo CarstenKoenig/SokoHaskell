@@ -70,10 +70,11 @@ keyInput gameState wnd key = do
 			return True
 		Just 'r' -> restart state
 		Just 'n' -> nextLevelIfPossible state
-		Just 'w' -> doStep state Up
-		Just 'a' -> doStep state Left
-		Just 's' -> doStep state Down
-		Just 'd' -> doStep state Right
+		Just 'u' -> undo state
+		Just 'w' -> moveFwd state Up
+		Just 'a' -> moveFwd state Left
+		Just 's' -> moveFwd state Down
+		Just 'd' -> moveFwd state Right
 		otherwise -> do
 			putMVar gameState state
 			return True
@@ -90,9 +91,12 @@ keyInput gameState wnd key = do
 			putMVar gameState $ restartLevel state
 			redraw wnd
 			return True
-		doStep state d = do
-			let upd = step d
-			putMVar gameState $ updateLevel state upd
+		moveFwd state mv = do
+			putMVar gameState $ move state mv
+			redraw wnd
+			return True
+		undo state = do
+			putMVar gameState $ undoMove state
 			redraw wnd
 			return True
 		redraw wnd = do

@@ -10,3 +10,4 @@ KEYBINDINGS:
 - Q to quit the game
 - R to restart the current level
 - N to go to the next level
+- U to undo the last action

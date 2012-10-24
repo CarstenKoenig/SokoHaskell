@@ -10,6 +10,7 @@ import Data.Char (toLower)
 import Control.Monad (liftM, forM)
 
 type Coord = (Int, Int)
+type MovedWithCrate = Bool
 
 data Level = Level { width    :: Int
                    , height   :: Int 
@@ -33,23 +34,45 @@ emptyLevel = Level { width    = 0
                    , steps    = 0
                    }
 
-step :: Move -> Level -> Level
+step :: Move -> Level -> Maybe (Level, MovedWithCrate)
 step mv lvl
-	| isWallAt lvl nextCoord  = lvl
+	| isWallAt lvl nextCoord  = Nothing
 	| isCrateAt lvl nextCoord =
 		if isWallAt lvl nextCoord'
 		   || isCrateAt lvl nextCoord'
-	    then lvl
-	    else lvl { crates = moveCrate, worker = nextCoord, steps = 1+steps lvl }
-	| otherwise               = lvl { worker = nextCoord, steps = 1+steps lvl }
+	    then Nothing
+	    else Just (lvl { crates = moveCrate, worker = nextCoord, steps = 1+steps lvl }, True)
+	| otherwise               = Just (lvl { worker = nextCoord, steps = 1+steps lvl }, False)
 	where nextCoord  = moveCoord (worker lvl) mv
 	      nextCoord' = moveCoord nextCoord mv
 	      moveCrate  = nextCoord':(delete nextCoord $ crates lvl)
-	      moveCoord (x, y) r
-	      	| r == Up    = (x, y-1)
-	      	| r == Down  = (x, y+1)
-			| r == Left  = (x-1, y)
-			| r == Right = (x+1,y)
+
+stepBack :: (Move, MovedWithCrate) -> Level -> Level
+stepBack (mv, withCrate) lvl
+    | isWallAt lvl prevCoord = lvl
+    | isCrateAt lvl prevCoord = lvl
+    | isCrateAt lvl nextCoord && withCrate =
+        lvl { crates = moveCrate, worker = prevCoord, steps = steps lvl -1 }
+    | otherwise =
+        lvl { worker = prevCoord, steps = steps lvl -1 }
+    where nextCoord = moveCoord (worker lvl) mv
+          prevCoord = moveCoord (worker lvl) (opposite mv)
+          moveCrate = (worker lvl):(delete nextCoord $ crates lvl)
+
+opposite :: Move -> Move
+opposite r
+    | r == Down  = Up
+    | r == Up    = Down
+    | r == Left  = Right
+    | r == Right = Left
+
+moveCoord :: Coord -> Move -> Coord
+moveCoord (x, y) r
+    | r == Up    = (x, y-1)
+    | r == Down  = (x, y+1)
+    | r == Left  = (x-1, y)
+    | r == Right = (x+1,y)
+
 
 isFinished :: Level -> Bool
 isFinished lvl = (sort $ crates lvl) == (sort $ storages lvl)

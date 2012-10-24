@@ -2,7 +2,8 @@
 
 module SokobanState (
     GameState (currentLevel), 
-    startGame, restartLevel, nextLevel, updateLevel,
+    startGame, restartLevel, nextLevel, 
+    move, undoMove,
     levelNr,
     loadLevelsFromFile, loadLevelsFromArgs
     ) where
@@ -20,24 +21,33 @@ import Control.Monad (liftM, forM)
 data GameState = GameState { gameLevels :: [Level]
                            , currentLevelIndex :: Int
                            , currentLevel :: Level
+                           , moves :: [(Move, MovedWithCrate)]
                            }
 
 startGame :: [Level] -> GameState
-startGame lvls = GameState { gameLevels = lvls, currentLevelIndex = 0, currentLevel = lvls!!0 }
+startGame lvls = GameState { gameLevels = lvls, currentLevelIndex = 0, currentLevel = lvls!!0, moves = [] }
 
 restartLevel :: GameState -> GameState 
-restartLevel state = state { currentLevel = (gameLevels state) !! (currentLevelIndex state) }
+restartLevel state = state { currentLevel = (gameLevels state) !! (currentLevelIndex state), moves = [] }
 
-updateLevel :: GameState -> (Level -> Level) -> GameState
-updateLevel state upd = 
-    let level = upd $ currentLevel state in
-    if (not $ isFinished level)
-        then state { currentLevel = upd $ currentLevel state }
-        else nextLevel state
+move :: GameState -> Move -> GameState
+move state mv =
+    case (step mv $ currentLevel state) of
+        Just (level, withCrate) ->
+            if (not $ isFinished level)
+                then state { currentLevel = level,
+                             moves        = (mv, withCrate):(moves state) }
+                else nextLevel state
+        Nothing -> state
+
+undoMove :: GameState -> GameState
+undoMove state = undo $ moves state
+    where undo []     = state
+          undo (m:ms) = state { moves = ms, currentLevel = stepBack m $ currentLevel state }
 
 nextLevel :: GameState -> GameState
 nextLevel state = 
-    state { currentLevelIndex = i, currentLevel = (gameLevels state)!!i }
+    state { currentLevelIndex = i, currentLevel = (gameLevels state)!!i, moves = [] }
     where i = currentLevelIndex state + 1 `mod` (length $ gameLevels state)
 
 levelNr :: GameState -> Int
