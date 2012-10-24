@@ -80,7 +80,7 @@ keyInput gameState wnd key = do
 	where
 		nextLevelIfPossible state = do
 			let newState = 
-				if (isFinished $ currentLevel state)
+				if (True || (isFinished $ currentLevel state))
 				then nextLevel state
 				else state
 			putMVar gameState $ newState

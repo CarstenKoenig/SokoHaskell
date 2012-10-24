@@ -29,7 +29,11 @@ restartLevel :: GameState -> GameState
 restartLevel state = state { currentLevel = (gameLevels state) !! (currentLevelIndex state) }
 
 updateLevel :: GameState -> (Level -> Level) -> GameState
-updateLevel state upd = state { currentLevel = upd $ currentLevel state }
+updateLevel state upd = 
+    let level = upd $ currentLevel state in
+    if (not $ isFinished level)
+        then state { currentLevel = upd $ currentLevel state }
+        else nextLevel state
 
 nextLevel :: GameState -> GameState
 nextLevel state = 

@@ -9,4 +9,4 @@ KEYBINDINGS:
 - in game use WASD to move around (W=Up, S=Down, A=Left, D=Right)
 - Q to quit the game
 - R to restart the current level
-- N to go to the next level (only if you solved the current one - indicated by a nice green sucess-message on screen)
+- N to go to the next level
