@@ -3,3 +3,10 @@ Manythanks to Daniel Cook from LostGardens (http://www.lostgarden.com/2007/05/da
 
 BTW: I got the idea for this by watching http://www.youtube.com/watch?v=mtvoOIsN-GU - which in turn is based on this Ruby-Quizz: http://www.rubyquiz.com/quiz5.html and I too use the levels from http://www.rubyquiz.com/sokoban_levels.txt (copyrighted by Thinking Rabbit - so you can play them but not make money with them - thank you too!)
 So if you see any similarities ... well sorry...
+
+USAGE: run the program (Sokoban by default) and give it the "AllLevels.lvls" as an argument (like this ./Sokoban AllLevels.lvls)
+KEYBINDINGS: 
+- in game use WASD to move around (W=Up, S=Down, A=Left, D=Right)
+- Q to quit the game
+- R to restart the current level
+- N to go to the next level (only if you solved the current one - indicated by a nice green sucess-message on screen)
