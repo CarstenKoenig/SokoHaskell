@@ -11,4 +11,6 @@ Executable sokoban
   Main-is:           SokobanUI.hs
   Build-Depends: base >= 3 && < 5,
                  gtk,
+                 directory,
+                 time,
                  cairo

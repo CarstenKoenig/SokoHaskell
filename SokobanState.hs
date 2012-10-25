@@ -12,9 +12,10 @@ import Prelude hiding (Either(..))
 
 import Sokoban
 import SokobanText
+import SokobanHighscore (LevelNr)
 
 data GameState = GameState { gameLevels :: [Level]
-                           , currentLevelIndex :: Int
+                           , currentLevelIndex :: LevelNr
                            , currentLevel :: Level
                            , moves :: [(Move, MovedWithCrate)]
                            }
@@ -45,7 +46,7 @@ nextLevel state =
     state { currentLevelIndex = i, currentLevel = (gameLevels state)!!i, moves = [] }
     where i = currentLevelIndex state + 1 `mod` (length $ gameLevels state)
 
-levelNr :: GameState -> Int
+levelNr :: GameState -> LevelNr
 levelNr state = currentLevelIndex state + 1
 
 stepCount :: GameState -> Int

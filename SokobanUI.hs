@@ -13,6 +13,7 @@ import Graphics.Rendering.Cairo
 
 import Sokoban
 import SokobanState
+import SokobanHighscore
 
 data Tile = WorkerTile | CrateTile | StorageTile | WallTile
 type ImageMap = Tile -> Surface
@@ -75,6 +76,7 @@ keyInput gameState wnd key = do
 		Just 'a' -> moveFwd state Left
 		Just 's' -> moveFwd state Down
 		Just 'd' -> moveFwd state Right
+		Just 'h' -> showHighscore state
 		otherwise -> do
 			putMVar gameState state
 			return True
@@ -97,6 +99,11 @@ keyInput gameState wnd key = do
 			return True
 		undo state = do
 			putMVar gameState $ undoMove state
+			redraw wnd
+			return True
+		showHighscore state = do
+			putMVar gameState state
+			showHighscoreDialog (levelNr state)
 			redraw wnd
 			return True
 		redraw wnd = do

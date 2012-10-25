@@ -4,12 +4,14 @@ module SokobanHighscore
     ( highScoreEntriesPerLevel
     , Highscore (..)
     , Highscores
+    , LevelNr
     , levelHighscores
     , addHighscore
     , createUnnamedScoreForNow
     , setHighscoreName
     , loadHighscoresFromFile
     , saveHighscoresToFile
+    , showHighscoreDialog
     ) where
 
 import Prelude hiding (Either(..))
@@ -20,15 +22,22 @@ import Data.List (concatMap, sortBy, insertBy, deleteBy)
 import Control.Monad(liftM)
 import Sokoban
 
+import Graphics.UI.Gtk hiding (on)
+import Graphics.UI.Gtk.Builder
+import Graphics.UI.Gtk.ModelView as Model
+
 highScoreEntriesPerLevel :: Int
 highScoreEntriesPerLevel = 5
+
+highscoreFilePath :: String
+highscoreFilePath = "Highscores.txt"
 
 type LevelNr = Int
 data Highscore = Highscore { hsLevel :: LevelNr
                            , hsTime  :: LocalTime
                            , hsSteps :: Int
                            , hsName  :: String
-                           } deriving (Show, Read)
+                           } deriving (Show, Read, Eq)
 
 data Highscores = HScs [(LevelNr, [Highscore])]
 
@@ -74,3 +83,46 @@ loadHighscoresFromFile path = do
 
 saveHighscoresToFile :: String -> Highscores -> IO ()
 saveHighscoresToFile path (HScs hs) = writeFile path $ show hs
+
+showHighscoreDialog :: LevelNr -> IO ()
+showHighscoreDialog lvl = do
+    --hs <- (liftM $ levelHighscores lvl) $ loadHighscoresFromFile highscoreFilePath
+    hs <- loadHighscoresFromFile highscoreFilePath
+    dummy <- (liftM $ setHighscoreName "*****") $ createUnnamedScoreForNow lvl 42
+    let highscore = levelHighscores lvl $ addHighscore dummy hs
+
+    builder <- builderNew
+    builderAddFromFile builder "Highscore.glade"
+
+    dialog <- builderGetObject builder castToDialog "dialogHighscore"
+    treeView <- builderGetObject builder castToTreeView "listHighscore"
+
+    populateHighscoreStore highscore treeView
+
+    --closeButton <- builderGetObject builder castToButton "buttonOk"
+    --onClicked closeButton $ do widgetDestroy dialog
+
+    dlgRes <- dialogRun dialog
+    widgetDestroy dialog
+
+populateHighscoreStore :: [Highscore] -> TreeView -> IO ()
+populateHighscoreStore hs treeView = do
+    store  <- listStoreNew $ zip [1..] hs
+
+    addColumn store "nr. "   (\(i,_) -> show i)
+    addColumn store "steps " (\(_,v) -> show $ hsSteps v)
+    addColumn store "name "  (\(_,v) -> hsName v)
+    addColumn store "date "  (\(_,v) -> show $ hsTime v)
+
+    Model.treeViewSetModel treeView store
+
+    where 
+        addColumn store title getValueText = do
+            column <- Model.treeViewColumnNew
+            Model.treeViewColumnSetTitle column title
+            cell <- Model.cellRendererTextNew
+            Model.cellLayoutPackStart column cell True
+            Model.cellLayoutSetAttributes column cell store $ 
+                \row -> [ Model.cellText := getValueText row ]
+            Model.treeViewAppendColumn treeView column
+
