@@ -18,8 +18,8 @@ import Prelude hiding (Either(..))
 import System.Directory
 import Data.Function(on)
 import Data.Time
-import Data.List (concatMap, sortBy, insertBy, deleteBy)
-import Control.Monad(liftM)
+import Data.List (concatMap, sort, insertBy, deleteBy, maximum)
+import Control.Monad(liftM, when)
 import Sokoban
 
 import Graphics.UI.Gtk hiding (on)
@@ -37,9 +37,22 @@ data Highscore = Highscore { hsLevel :: LevelNr
                            , hsTime  :: LocalTime
                            , hsSteps :: Int
                            , hsName  :: String
-                           } deriving (Show, Read, Eq)
+                           } deriving (Show, Read)
 
 data Highscores = HScs [(LevelNr, [Highscore])]
+
+instance Eq Highscore where
+    a == b = (hsLevel a == hsLevel b) && (hsTime a == hsTime b)
+
+instance Ord Highscore where
+    compare a b
+        | hsLevel a < hsLevel b = LT
+        | hsLevel a > hsLevel b = GT
+        | hsSteps a < hsSteps b = LT
+        | hsSteps a > hsSteps b = GT
+        | hsTime a < hsTime b   = LT
+        | hsTime a > hsTime b   = GT
+        | otherwise             = EQ
 
 levelHighscores :: LevelNr -> Highscores -> [Highscore]
 levelHighscores lvl = validateHighscores . filterLevel lvl
@@ -53,13 +66,20 @@ addHighscore h hs =
         newEntry = (lvl, updatedScores) in
         HScs $ replaceOn fst newEntry hscs
 
+isHighscore :: Highscore -> Highscores -> Bool
+isHighscore h hs = 
+    length lvlHs < highScoreEntriesPerLevel
+    || maxSteps > hsSteps h
+    where lvlHs = levelHighscores (hsLevel h) hs
+          maxSteps = maximum . (map hsSteps) $ lvlHs
+
 replaceOn :: Ord b => (a -> b) -> a -> [a] -> [a]
 replaceOn m itm ls =
     let remList = deleteBy ((==) `on` m) itm ls in
         insertBy (compare `on` m) itm remList
 
 validateHighscores :: [Highscore] -> [Highscore]
-validateHighscores = take highScoreEntriesPerLevel . (sortBy (compare `on` hsSteps))
+validateHighscores = take highScoreEntriesPerLevel . sort
 
 filterLevel :: LevelNr -> Highscores -> [Highscore]
 filterLevel lvl (HScs hs) = concatMap snd $ filter ((==lvl) . fst) hs
@@ -86,24 +106,33 @@ saveHighscoresToFile path (HScs hs) = writeFile path $ show hs
 
 showHighscoreDialog :: LevelNr -> IO ()
 showHighscoreDialog lvl = do
-    --hs <- (liftM $ levelHighscores lvl) $ loadHighscoresFromFile highscoreFilePath
-    hs <- loadHighscoresFromFile highscoreFilePath
-    dummy <- (liftM $ setHighscoreName "*****") $ createUnnamedScoreForNow lvl 42
-    let highscore = levelHighscores lvl $ addHighscore dummy hs
+    highscore <- (liftM $ levelHighscores lvl) $ loadHighscoresFromFile highscoreFilePath
+    displayHighscoreDialog highscore False
 
+enterHighscoreDialog :: LevelNr -> Int -> IO ()
+enterHighscoreDialog lvl steps = do
+    hs <- loadHighscoresFromFile highscoreFilePath
+    newScore <- (liftM $ setHighscoreName "**YOU**") $ createUnnamedScoreForNow lvl steps
+    let highscore = levelHighscores lvl $ addHighscore newScore hs
+
+    displayHighscoreDialog highscore (isHighscore newScore hs)
+
+displayHighscoreDialog :: [Highscore] -> Bool -> IO ()
+displayHighscoreDialog highscores newHighscore = do
     builder <- builderNew
     builderAddFromFile builder "Highscore.glade"
 
     dialog <- builderGetObject builder castToDialog "dialogHighscore"
+
     treeView <- builderGetObject builder castToTreeView "listHighscore"
+    populateHighscoreStore highscores treeView
 
-    populateHighscoreStore highscore treeView
-
-    --closeButton <- builderGetObject builder castToButton "buttonOk"
-    --onClicked closeButton $ do widgetDestroy dialog
+    enterNameBox <- builderGetObject builder castToVBox "vboxEnterName"
+    when (not newHighscore) $ do widgetHide enterNameBox
 
     dlgRes <- dialogRun dialog
     widgetDestroy dialog
+
 
 populateHighscoreStore :: [Highscore] -> TreeView -> IO ()
 populateHighscoreStore hs treeView = do
