@@ -9,7 +9,7 @@ import Control.Concurrent.MVar
 
 import Graphics.UI.Gtk
 import Graphics.UI.Gtk.Gdk.Events(Event( Configure ), eventKeyChar)
-import Graphics.Rendering.Cairo
+import Graphics.Rendering.Cairo hiding (height,width)
 
 import Sokoban
 import SokobanState
